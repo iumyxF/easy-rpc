@@ -54,6 +54,7 @@ public class JsonSerializer implements Serializer {
                 args[i] = OBJECT_MAPPER.readValue(argBytes, clazz);
             }
         }
+        // 转换对象
         return type.cast(rpcRequest);
     }
 
