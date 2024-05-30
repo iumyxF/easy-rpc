@@ -20,6 +20,7 @@ import java.io.IOException;
  * @date 2024/5/13 21:08
  */
 public class VertxServerHandler implements Handler<HttpServerRequest> {
+
     @Override
     public void handle(HttpServerRequest request) {
         JsonSerializer serializer = new JsonSerializer();
@@ -43,7 +44,6 @@ public class VertxServerHandler implements Handler<HttpServerRequest> {
                 doResponse(request, rpcResponse, serializer);
                 return;
             }
-
             // TODO 调用服务类，获取结果
         });
     }
