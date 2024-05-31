@@ -9,12 +9,12 @@ import java.io.IOException;
 /**
  * 使用jackson 实现 序列化机制
  *
- * @author feng
+ * @author iumyxF
  * @date 2024/5/13 21:14
  */
 public class JsonSerializer implements Serializer {
 
-    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    public static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     @Override
     public <T> byte[] serialize(T object) throws IOException {

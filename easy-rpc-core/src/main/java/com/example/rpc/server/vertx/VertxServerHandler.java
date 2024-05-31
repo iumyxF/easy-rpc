@@ -1,5 +1,6 @@
 package com.example.rpc.server.vertx;
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.ContentType;
 import cn.hutool.http.Header;
 import com.example.rpc.model.RpcRequest;
@@ -20,7 +21,7 @@ import java.lang.reflect.Method;
 /**
  * <a href="https://vertx-china.github.io/docs/vertx-web/java/#_re_cap_on_vert_x_core_http_servers"/>
  *
- * @author feng
+ * @author iumyxF
  * @date 2024/5/13 21:08
  */
 public class VertxServerHandler implements Handler<HttpServerRequest> {
@@ -47,7 +48,7 @@ public class VertxServerHandler implements Handler<HttpServerRequest> {
                 return;
             }
             // 空值处理
-            if (null == rpcRequest) {
+            if (null == rpcRequest || StrUtil.hasBlank(rpcRequest.getServiceName(), rpcRequest.getMethodName())) {
                 rpcResponse.setData("The rpc request failed because the request body was null");
                 doResponse(request, rpcResponse, serializer);
                 return;

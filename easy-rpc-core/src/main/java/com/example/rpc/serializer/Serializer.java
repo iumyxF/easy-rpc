@@ -5,7 +5,7 @@ import java.io.IOException;
 /**
  * 序列化器
  *
- * @author feng
+ * @author iumyxF
  * @date 2024/5/13 21:13
  */
 public interface Serializer {
