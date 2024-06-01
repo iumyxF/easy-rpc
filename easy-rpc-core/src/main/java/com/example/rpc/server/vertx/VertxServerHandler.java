@@ -6,8 +6,8 @@ import cn.hutool.http.Header;
 import com.example.rpc.model.RpcRequest;
 import com.example.rpc.model.RpcResponse;
 import com.example.rpc.registry.LocalRegistry;
-import com.example.rpc.serializer.JsonSerializer;
 import com.example.rpc.serializer.Serializer;
+import com.example.rpc.serializer.SerializerFactory;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerRequest;
@@ -30,9 +30,8 @@ public class VertxServerHandler implements Handler<HttpServerRequest> {
 
     @Override
     public void handle(HttpServerRequest request) {
-        JsonSerializer serializer = new JsonSerializer();
+        Serializer serializer = SerializerFactory.getJsonSerializer();
         log.debug("接收到的请求方法: {} ,请求路径: {}", request.method(), request.uri());
-
         // 异步处理请求
         request.bodyHandler(body -> {
             RpcResponse rpcResponse = new RpcResponse();

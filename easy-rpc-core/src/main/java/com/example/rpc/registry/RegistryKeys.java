@@ -7,11 +7,9 @@ package com.example.rpc.registry;
  */
 public interface RegistryKeys {
 
-    String LOCAL = "local";
+    String NACOS = "NacosRegistry";
 
-    String NACOS = "nacos";
+    String ETCD = "EtcdRegistry";
 
-    String ETCD = "etcd";
-
-    String ZOOKEEPER = "zookeeper";
+    String ZOOKEEPER = "ZookeeperRegistry";
 }
