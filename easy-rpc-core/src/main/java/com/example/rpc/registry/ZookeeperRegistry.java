@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @author iumyxF
- * @description:
+ * @description: zookeeper 注册中心
  * @date 2024/6/1 10:40
  */
 public class ZookeeperRegistry implements Registry{
