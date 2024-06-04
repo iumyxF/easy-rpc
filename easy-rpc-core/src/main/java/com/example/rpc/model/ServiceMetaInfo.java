@@ -18,7 +18,7 @@ public class ServiceMetaInfo {
     /**
      * 服务版本号
      */
-    private String serviceVersion = "1.0";
+    private String serviceVersion = RpcConstant.DEFAULT_SERVICE_VERSION;
 
     /**
      * 服务域名
@@ -33,7 +33,7 @@ public class ServiceMetaInfo {
     /**
      * 服务分组 默认分组
      */
-    private String serviceGroup = "DEFAULT_GROUP";
+    private String serviceGroup = RpcConstant.DEFAULT_GROUP;
 
     /**
      * 获取服务键名

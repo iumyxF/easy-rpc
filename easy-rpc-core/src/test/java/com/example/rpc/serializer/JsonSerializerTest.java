@@ -1,5 +1,6 @@
 package com.example.rpc.serializer;
 
+import com.example.rpc.model.RpcConstant;
 import com.example.rpc.model.RpcRequest;
 import org.junit.Test;
 
@@ -18,7 +19,7 @@ public class JsonSerializerTest {
         RpcRequest request = new RpcRequest();
         request.setServiceName("testServer");
         request.setMethodName("testSerialize");
-        request.setServiceVersion("1.0");
+        request.setServiceVersion(RpcConstant.DEFAULT_SERVICE_VERSION);
         request.setParameterTypes(new Class[]{Integer.class, String.class, List.class, Map.class});
         HashMap<String, Object> map = new HashMap<>();
         map.put("key1", 1);

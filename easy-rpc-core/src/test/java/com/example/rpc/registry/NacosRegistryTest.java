@@ -1,6 +1,7 @@
 package com.example.rpc.registry;
 
 import com.example.rpc.config.RegistryConfig;
+import com.example.rpc.model.RpcConstant;
 import com.example.rpc.model.ServiceMetaInfo;
 import org.junit.*;
 
@@ -27,7 +28,7 @@ public class NacosRegistryTest {
 
         serviceMetaInfo = new ServiceMetaInfo();
         serviceMetaInfo.setServiceName("UserService");
-        serviceMetaInfo.setServiceVersion("1.0.0");
+        serviceMetaInfo.setServiceVersion(RpcConstant.DEFAULT_SERVICE_VERSION);
         serviceMetaInfo.setServiceHost("192.168.2.199");
         serviceMetaInfo.setServicePort(9099);
     }

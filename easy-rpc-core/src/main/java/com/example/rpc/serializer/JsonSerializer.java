@@ -5,6 +5,7 @@ import com.example.rpc.model.RpcResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 使用jackson 实现 序列化机制
@@ -68,8 +69,10 @@ public class JsonSerializer implements Serializer {
      */
     private <T> T handleResponse(RpcResponse rpcResponse, Class<T> type) throws IOException {
         // 处理响应数据
-        byte[] dataBytes = OBJECT_MAPPER.writeValueAsBytes(rpcResponse.getData());
-        rpcResponse.setData(OBJECT_MAPPER.readValue(dataBytes, rpcResponse.getDataType()));
+        if (null != rpcResponse.getData()) {
+            byte[] dataBytes = OBJECT_MAPPER.writeValueAsBytes(rpcResponse.getData());
+            rpcResponse.setData(OBJECT_MAPPER.readValue(dataBytes, rpcResponse.getDataType()));
+        }
         return type.cast(rpcResponse);
     }
 }

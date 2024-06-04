@@ -1,12 +1,12 @@
 package com.example.rpc.server;
 
 /**
- * HTTP 服务器
+ * 网络 服务器
  *
  * @author iumyxF
  * @date 2024/5/13 20:55
  */
-public interface HttpServer {
+public interface NetServer {
 
     /**
      * 启动服务器

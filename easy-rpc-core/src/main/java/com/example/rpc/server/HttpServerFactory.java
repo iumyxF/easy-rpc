@@ -10,19 +10,19 @@ import com.example.rpc.spi.SpiLoader;
 public class HttpServerFactory {
 
     static {
-        SpiLoader.load(HttpServer.class);
+        SpiLoader.load(NetServer.class);
     }
 
-    public static HttpServer getVertxHttpServer() {
-        return getInstance(HttpServerKeys.VERTX);
+    public static NetServer getVertxHttpServer() {
+        return getInstance(NetServerKeys.VERTX_HTTP);
     }
 
-    public static HttpServer getNettyServer() {
-        return getInstance(HttpServerKeys.NETTY);
+    public static NetServer getNettyServer() {
+        return getInstance(NetServerKeys.NETTY);
     }
 
-    public static HttpServer getInstance(String key) {
-        return SpiLoader.getInstance(HttpServer.class, key);
+    public static NetServer getInstance(String key) {
+        return SpiLoader.getInstance(NetServer.class, key);
     }
 
 }

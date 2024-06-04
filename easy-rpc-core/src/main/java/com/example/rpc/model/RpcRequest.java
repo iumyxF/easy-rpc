@@ -18,6 +18,8 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class RpcRequest implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * 服务名称
      */
@@ -31,7 +33,7 @@ public class RpcRequest implements Serializable {
     /**
      * 服务版本
      */
-    private String serviceVersion = "1.0";
+    private String serviceVersion = RpcConstant.DEFAULT_SERVICE_VERSION;
 
     /**
      * 参数类型列表

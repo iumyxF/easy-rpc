@@ -5,9 +5,11 @@ package com.example.rpc.server;
  * @description:
  * @date 2024/6/1 10:45
  */
-public interface HttpServerKeys {
+public interface NetServerKeys {
 
-    String VERTX = "VertxHttpServer";
+    String VERTX_HTTP = "VertxHttpServer";
+
+    String VERTX_TCP = "VertxTcpServer";
 
     String NETTY = "NettyHttpServer";
 }

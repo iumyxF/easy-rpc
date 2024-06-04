@@ -1,6 +1,6 @@
-package com.example.rpc.server.vertx;
+package com.example.rpc.server.vertx.http;
 
-import com.example.rpc.server.HttpServer;
+import com.example.rpc.server.NetServer;
 import io.vertx.core.Vertx;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
  * @author iumyxF
  * @date 2024/5/13 21:00
  */
-public class VertxHttpServer implements HttpServer {
+public class VertxHttpServer implements NetServer {
 
     private static final Logger log = LoggerFactory.getLogger(VertxHttpServer.class);
 

@@ -1,6 +1,6 @@
 package com.example.rpc.server.netty;
 
-import com.example.rpc.server.HttpServer;
+import com.example.rpc.server.NetServer;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -21,7 +21,7 @@ import java.net.InetSocketAddress;
  * @author iumyxF
  * @date 2024/5/13 21:01
  */
-public class NettyHttpServer implements HttpServer {
+public class NettyHttpServer implements NetServer {
 
     private static final Logger log = LoggerFactory.getLogger(NettyHttpServer.class);
 

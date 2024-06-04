@@ -1,7 +1,7 @@
 package com.example.rpc.test;
 
 import com.example.rpc.registry.LocalRegistry;
-import com.example.rpc.server.HttpServer;
+import com.example.rpc.server.NetServer;
 import com.example.rpc.server.netty.NettyHttpServer;
 
 /**
@@ -16,7 +16,7 @@ public class NettyHttpServerTest {
      */
     public static void main(String[] args) {
         LocalRegistry.register("HelloService", HelloService.class);
-        HttpServer httpServer = new NettyHttpServer();
+        NetServer httpServer = new NettyHttpServer();
         httpServer.start(8080);
     }
 }

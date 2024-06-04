@@ -1,8 +1,8 @@
 package com.example.rpc.test;
 
 import com.example.rpc.registry.LocalRegistry;
-import com.example.rpc.server.HttpServer;
-import com.example.rpc.server.vertx.VertxHttpServer;
+import com.example.rpc.server.NetServer;
+import com.example.rpc.server.vertx.http.VertxHttpServer;
 
 /**
  * @author iumyxF
@@ -15,7 +15,7 @@ public class VertxHttpServerTest {
      * 发送JSON数据进行测试 {"serviceName":"HelloService","methodName":"sayHello","serviceVersion":"1.0","parameterTypes":["java.lang.String"],"args":["zs"]}
      */
     public static void main(String[] args) {
-        HttpServer httpServer = new VertxHttpServer();
+        NetServer httpServer = new VertxHttpServer();
         httpServer.start(8080);
         LocalRegistry.register("HelloService", HelloService.class);
     }

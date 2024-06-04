@@ -1,6 +1,8 @@
 package com.example.rpc.config;
 
+import com.example.rpc.model.RpcConstant;
 import com.example.rpc.serializer.SerializerKeys;
+import com.example.rpc.server.NetServerKeys;
 import lombok.Data;
 
 /**
@@ -19,7 +21,7 @@ public class RpcConfig {
     /**
      * 版本号
      */
-    private String version = "1.0";
+    private String version = RpcConstant.DEFAULT_SERVICE_VERSION;
 
     /**
      * 服务器主机名
@@ -35,6 +37,11 @@ public class RpcConfig {
      * 序列化器
      */
     private String serializer = SerializerKeys.JDK;
+
+    /**
+     * HTTP服务器类型
+     */
+    private String httpServer = NetServerKeys.VERTX_HTTP;
 
     /**
      * 注册中心配置
