@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author iumyxF
- * @description: 本地注册中心 测试使用
+ * @description: 本地注册中心
  * @date 2024/5/14 14:22
  */
 public class LocalRegistry {

@@ -10,6 +10,10 @@
     <packaging>pom</packaging>
     <modules>
         <module>easy-rpc-core</module>
+        <module>easy-rpc-springboot-starter</module>
+        <module>example-consumer</module>
+        <module>example-common</module>
+        <module>example-provider</module>
     </modules>
 
     <properties>

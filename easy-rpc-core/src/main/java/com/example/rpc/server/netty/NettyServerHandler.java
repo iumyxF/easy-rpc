@@ -31,9 +31,6 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<FullHttpRequ
 
     /**
      * 接收HTTP请求，进行分发处理
-     *
-     * @param ctx
-     * @param request
      */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest request) {
@@ -42,9 +39,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<FullHttpRequ
             return;
         }
         log.info("请求方法:{} ,请求地址:{}", request.method(), request.uri());
-
         RpcResponse rpcResponse = new RpcResponse();
-
         RequestHandler handler = RequestHandlerFactory.getRequestHandler(request.method());
         RpcRequest rpcRequest = handler.handle(request);
         if (null == rpcRequest || StrUtil.hasBlank(rpcRequest.getServiceName(), rpcRequest.getMethodName())) {

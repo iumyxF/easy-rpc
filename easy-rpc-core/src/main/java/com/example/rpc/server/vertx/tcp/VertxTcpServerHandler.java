@@ -4,7 +4,6 @@ import com.example.rpc.model.RpcRequest;
 import com.example.rpc.model.RpcResponse;
 import com.example.rpc.protocol.*;
 import com.example.rpc.registry.LocalRegistry;
-import com.example.rpc.server.vertx.http.VertxHttpServer;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.net.NetSocket;
@@ -16,7 +15,7 @@ import java.lang.reflect.Method;
 
 /**
  * @author iumyxF
- * @description: https://vertx-china.github.io/docs/vertx-core/java/#_writing_tcp_servers_and_clients
+ * @description: <a href="https://vertx-china.github.io/docs/vertx-core/java/#_writing_tcp_servers_and_clients">...</a>
  * @date 2024/6/3 9:31
  */
 public class VertxTcpServerHandler implements Handler<NetSocket> {

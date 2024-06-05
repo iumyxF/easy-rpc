@@ -31,7 +31,7 @@ public class RpcConfig {
     /**
      * 服务器端口号
      */
-    private Integer serverPort = 8080;
+    private Integer serverPort = 9001;
 
     /**
      * 序列化器
@@ -41,7 +41,7 @@ public class RpcConfig {
     /**
      * HTTP服务器类型
      */
-    private String httpServer = NetServerKeys.VERTX_HTTP;
+    private String httpServer = NetServerKeys.VERTX_TCP;
 
     /**
      * 注册中心配置

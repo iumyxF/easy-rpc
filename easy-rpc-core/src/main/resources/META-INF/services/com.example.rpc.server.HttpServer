@@ -1,2 +1,0 @@
-com.example.rpc.server.vertx.http.VertxHttpServer
-com.example.rpc.server.netty.NettyHttpServer

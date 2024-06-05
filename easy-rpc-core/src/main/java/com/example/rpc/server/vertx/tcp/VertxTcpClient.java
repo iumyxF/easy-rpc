@@ -1,13 +1,12 @@
 package com.example.rpc.server.vertx.tcp;
 
 import cn.hutool.core.util.IdUtil;
-import cn.hutool.log.Log;
+import com.example.rpc.RpcApplication;
 import com.example.rpc.model.RpcRequest;
 import com.example.rpc.model.RpcResponse;
 import com.example.rpc.model.ServiceMetaInfo;
 import com.example.rpc.protocol.*;
 import com.example.rpc.serializer.SerializerEnums;
-import com.example.rpc.server.vertx.http.VertxServerHandler;
 import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.net.NetClient;
@@ -88,9 +87,7 @@ public class VertxTcpClient {
         ProtocolMessage.Header header = new ProtocolMessage.Header();
         header.setMagic(ProtocolConstant.PROTOCOL_MAGIC);
         header.setVersion(ProtocolConstant.PROTOCOL_VERSION);
-        //header.setSerializer((byte) SerializerEnums.getEnumByValue(RpcApplication.getRpcConfig().getSerializer()).getKey());
-        // 测试使用
-        header.setSerializer((byte) SerializerEnums.JSON.getKey());
+        header.setSerializer((byte) SerializerEnums.getEnumByValue(RpcApplication.getRpcConfig().getSerializer()).getKey());
         header.setType((byte) ProtocolMessageTypeEnum.REQUEST.getKey());
         // 生成全局请求 ID
         header.setRequestId(IdUtil.getSnowflakeNextId());

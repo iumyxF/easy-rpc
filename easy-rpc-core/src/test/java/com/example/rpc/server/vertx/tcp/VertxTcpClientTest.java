@@ -7,10 +7,8 @@ import com.example.rpc.model.ServiceMetaInfo;
 
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.*;
-
 /**
- * @author fzy
+ * @author iumyxF
  * @description:
  * @date 2024/6/3 10:48
  */
@@ -31,8 +29,7 @@ public class VertxTcpClientTest {
         serviceMetaInfo.setServicePort(18080);
         serviceMetaInfo.setServiceGroup(RpcConstant.DEFAULT_GROUP);
 
-
-        RpcResponse rpcResponse = new VertxTcpClient().doRequest(rpcRequest, serviceMetaInfo);
+        RpcResponse rpcResponse = VertxTcpClient.doRequest(rpcRequest, serviceMetaInfo);
         System.out.println(rpcResponse);
 
     }
