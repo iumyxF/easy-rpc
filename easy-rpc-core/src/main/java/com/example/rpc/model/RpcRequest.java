@@ -44,4 +44,9 @@ public class RpcRequest implements Serializable {
      * 参数列表
      */
     private Object[] args;
+
+    /**
+     * 请求者ip地址
+     */
+    private String ipAddress;
 }

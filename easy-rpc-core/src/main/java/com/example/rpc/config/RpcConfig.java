@@ -1,5 +1,6 @@
 package com.example.rpc.config;
 
+import com.example.rpc.loadbalancer.LoadBalancerKeys;
 import com.example.rpc.model.RpcConstant;
 import com.example.rpc.serializer.SerializerKeys;
 import com.example.rpc.server.NetServerKeys;
@@ -42,6 +43,11 @@ public class RpcConfig {
      * HTTP服务器类型
      */
     private String httpServer = NetServerKeys.VERTX_TCP;
+
+    /**
+     * 负载均衡器
+     */
+    private String loadBalancer = LoadBalancerKeys.RANDOM;
 
     /**
      * 注册中心配置
