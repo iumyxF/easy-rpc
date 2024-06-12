@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 
 /**
  * @author iumyxF
- * @description: 服务提供者注解
+ * @description: 服务提供者注解（将服务注册到注册中心，以便消费者调用）
  * @date 2024/6/1 14:56
  */
 @Target({ElementType.TYPE})

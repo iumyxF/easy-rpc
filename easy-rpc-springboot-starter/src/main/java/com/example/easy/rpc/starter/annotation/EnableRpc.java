@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
 
 /**
  * @author iumyxF
- * @description: Rpc 启动注解
+ * @description: Rpc 启动注解 用于控制rpc服务器的启动
  * @date 2024/6/1 14:38
  */
 @Target({ElementType.TYPE})
