@@ -42,7 +42,7 @@ public class RpcConfig {
     /**
      * HTTP服务器类型
      */
-    private String httpServer = NetServerKeys.VERTX_TCP;
+    private String httpServer = NetServerKeys.NETTY_TCP;
 
     /**
      * 负载均衡器

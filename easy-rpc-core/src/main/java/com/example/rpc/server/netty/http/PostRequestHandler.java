@@ -1,4 +1,4 @@
-package com.example.rpc.server.netty.request;
+package com.example.rpc.server.netty.http;
 
 import cn.hutool.core.util.StrUtil;
 import com.example.rpc.model.RpcRequest;
@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
  * @description:
  * @date 2024/5/31 9:19
  */
-public class PostRequestHandler implements RequestHandler {
+public class PostRequestHandler implements HttpRequestHandler {
 
     private static final Logger log = LoggerFactory.getLogger(PostRequestHandler.class);
 

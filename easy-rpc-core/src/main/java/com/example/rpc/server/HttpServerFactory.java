@@ -18,7 +18,7 @@ public class HttpServerFactory {
     }
 
     public static NetServer getNettyServer() {
-        return getInstance(NetServerKeys.NETTY);
+        return getInstance(NetServerKeys.NETTY_HTTP);
     }
 
     public static NetServer getInstance(String key) {

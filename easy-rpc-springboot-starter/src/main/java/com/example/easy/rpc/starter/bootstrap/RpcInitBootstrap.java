@@ -40,7 +40,8 @@ public class RpcInitBootstrap implements ImportBeanDefinitionRegistrar {
         // 启动服务器
         if (enableServer) {
             NetServer httpServer = HttpServerFactory.getInstance(rpcConfig.getHttpServer());
-            httpServer.start(rpcConfig.getServerPort());
+            // 解决netty start阻塞的问题
+            new Thread(()->httpServer.start(rpcConfig.getServerPort())).start();
         } else {
             log.info("enable is false");
         }

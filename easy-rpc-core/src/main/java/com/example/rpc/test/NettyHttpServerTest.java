@@ -2,7 +2,7 @@ package com.example.rpc.test;
 
 import com.example.rpc.registry.LocalRegistry;
 import com.example.rpc.server.NetServer;
-import com.example.rpc.server.netty.NettyHttpServer;
+import com.example.rpc.server.netty.http.NettyHttpServer;
 
 /**
  * @author iumyxF

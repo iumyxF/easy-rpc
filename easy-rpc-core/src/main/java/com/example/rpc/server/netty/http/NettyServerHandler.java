@@ -1,4 +1,4 @@
-package com.example.rpc.server.netty;
+package com.example.rpc.server.netty.http;
 
 import cn.hutool.core.util.StrUtil;
 import com.example.rpc.model.RpcRequest;
@@ -6,8 +6,6 @@ import com.example.rpc.model.RpcResponse;
 import com.example.rpc.registry.LocalRegistry;
 import com.example.rpc.serializer.JsonSerializer;
 import com.example.rpc.serializer.Serializer;
-import com.example.rpc.server.netty.request.RequestHandler;
-import com.example.rpc.server.netty.request.RequestHandlerFactory;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
@@ -40,7 +38,7 @@ public class NettyServerHandler extends SimpleChannelInboundHandler<FullHttpRequ
         }
         log.info("请求方法:{} ,请求地址:{}", request.method(), request.uri());
         RpcResponse rpcResponse = new RpcResponse();
-        RequestHandler handler = RequestHandlerFactory.getRequestHandler(request.method());
+        HttpRequestHandler handler = RequestHandlerFactory.getRequestHandler(request.method());
         RpcRequest rpcRequest = handler.handle(request);
         if (null == rpcRequest || StrUtil.hasBlank(rpcRequest.getServiceName(), rpcRequest.getMethodName())) {
             rpcResponse.setData("The rpc request failed , check whether the request method and request parameters are valid");

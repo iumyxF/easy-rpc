@@ -11,5 +11,7 @@ public interface NetServerKeys {
 
     String VERTX_TCP = "VertxTcpServer";
 
-    String NETTY = "NettyHttpServer";
+    String NETTY_HTTP = "NettyHttpServer";
+
+    String NETTY_TCP = "NettyTcpServer";
 }

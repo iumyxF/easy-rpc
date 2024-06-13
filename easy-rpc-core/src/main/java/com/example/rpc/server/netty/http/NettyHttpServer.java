@@ -1,4 +1,4 @@
-package com.example.rpc.server.netty;
+package com.example.rpc.server.netty.http;
 
 import com.example.rpc.server.NetServer;
 import io.netty.bootstrap.ServerBootstrap;
@@ -33,8 +33,8 @@ public class NettyHttpServer implements NetServer {
 
     @Override
     public void start(int port) {
-        bossGroup = new NioEventLoopGroup(2, new DefaultThreadFactory("easy-rpc-boss", true));
-        workerGroup = new NioEventLoopGroup(4, new DefaultThreadFactory("easy-rpc-worker", true));
+        bossGroup = new NioEventLoopGroup(2, new DefaultThreadFactory("netty-http-boss", true));
+        workerGroup = new NioEventLoopGroup(4, new DefaultThreadFactory("netty-http-worker", true));
         ServerBootstrap bootstrap = new ServerBootstrap();
         bootstrap
                 .group(bossGroup, workerGroup)
@@ -61,7 +61,7 @@ public class NettyHttpServer implements NetServer {
             ChannelFuture future = bootstrap.bind().sync();
             if (future.isSuccess()) {
                 channel = future.channel();
-                log.info("Netty server started successfully, listening port is {}", port);
+                log.info("Netty HTTP server started successfully, listening port is {}", port);
                 future.channel().closeFuture().sync();
             }
         } catch (Exception ex) {

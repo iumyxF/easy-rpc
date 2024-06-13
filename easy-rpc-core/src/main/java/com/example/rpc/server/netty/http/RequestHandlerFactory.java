@@ -1,4 +1,4 @@
-package com.example.rpc.server.netty.request;
+package com.example.rpc.server.netty.http;
 
 import io.netty.handler.codec.http.HttpMethod;
 import org.slf4j.Logger;
@@ -16,15 +16,15 @@ public class RequestHandlerFactory {
 
     private static final Logger log = LoggerFactory.getLogger(RequestHandlerFactory.class);
 
-    public static final Map<HttpMethod, RequestHandler> HANDLER_MAP = new HashMap<>();
+    public static final Map<HttpMethod, HttpRequestHandler> HANDLER_MAP = new HashMap<>();
 
     static {
         HANDLER_MAP.put(HttpMethod.GET, new GetRequestHandler());
         HANDLER_MAP.put(HttpMethod.POST, new PostRequestHandler());
     }
 
-    public static RequestHandler getRequestHandler(HttpMethod httpMethod) {
-        RequestHandler requestHandler = HANDLER_MAP.get(httpMethod);
+    public static HttpRequestHandler getRequestHandler(HttpMethod httpMethod) {
+        HttpRequestHandler requestHandler = HANDLER_MAP.get(httpMethod);
         if (requestHandler == null) {
             log.error("requestHandler is null, httpMethod: {}", httpMethod);
             throw new RuntimeException("requestHandler is null");

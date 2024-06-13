@@ -1,3 +1,4 @@
 com.example.rpc.server.vertx.http.VertxHttpServer
-com.example.rpc.server.netty.NettyHttpServer
+com.example.rpc.server.netty.http.NettyHttpServer
 com.example.rpc.server.vertx.tcp.VertxTcpServer
+com.example.rpc.server.netty.tcp.NettyTcpServer

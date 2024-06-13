@@ -1,4 +1,4 @@
-package com.example.rpc.server.netty.request;
+package com.example.rpc.server.netty.http;
 
 import com.example.rpc.model.RpcRequest;
 import io.netty.handler.codec.http.FullHttpRequest;
@@ -15,7 +15,7 @@ import java.util.Map;
  * @description:
  * @date 2024/5/31 9:19
  */
-public class GetRequestHandler implements RequestHandler {
+public class GetRequestHandler implements HttpRequestHandler {
 
     private static final Logger log = LoggerFactory.getLogger(GetRequestHandler.class);
 
