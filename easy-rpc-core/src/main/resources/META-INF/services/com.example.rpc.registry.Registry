@@ -1,1 +1,2 @@
 com.example.rpc.registry.NacosRegistry
+com.example.rpc.registry.EtcdRegistry

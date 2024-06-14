@@ -3,6 +3,8 @@ package com.example.rpc.registry;
 import com.example.rpc.model.ServiceMetaInfo;
 
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author iumyxF
@@ -12,9 +14,9 @@ import java.util.List;
 public class RegistryServiceCache {
 
     /**
-     * 服务缓存
+     * 服务缓存 key = ServiceMetaInfo.getServiceKey()
      */
-    public List<ServiceMetaInfo> serviceCache;
+    private static final Map<String, List<ServiceMetaInfo>> SERVICE_CACHE = new ConcurrentHashMap<>(16);
 
     /**
      * 写缓存
@@ -22,8 +24,11 @@ public class RegistryServiceCache {
      * @param service 服务
      * @return void
      */
-    public void writeCache(List<ServiceMetaInfo> service) {
-        this.serviceCache = service;
+    public void writeCache(String serviceKey, List<ServiceMetaInfo> service) {
+        if (null == service || service.isEmpty()) {
+            return;
+        }
+        SERVICE_CACHE.put(serviceKey, service);
     }
 
     /**
@@ -31,14 +36,23 @@ public class RegistryServiceCache {
      *
      * @return 缓存服务
      */
-    public List<ServiceMetaInfo> readCache() {
-        return this.serviceCache;
+    public List<ServiceMetaInfo> readCache(String serviceKey) {
+        return SERVICE_CACHE.get(serviceKey);
+    }
+
+    /**
+     * 清空缓存
+     *
+     * @param serviceKey 缓存Key
+     */
+    public void clearCache(String serviceKey) {
+        SERVICE_CACHE.remove(serviceKey);
     }
 
     /**
      * 清空缓存
      */
     public void clearCache() {
-        this.serviceCache = null;
+        SERVICE_CACHE.clear();
     }
 }

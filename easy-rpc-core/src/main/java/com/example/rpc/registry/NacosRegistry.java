@@ -49,7 +49,7 @@ public class NacosRegistry implements Registry {
     /**
      * 根节点
      */
-    private static final String NACOS_ROOT_PATH = "/rpc/nacos";
+    private static final String NACOS_ROOT_PATH = "/rpc/nacos/";
 
     @Override
     public void init(RegistryConfig registryConfig) {
@@ -89,7 +89,7 @@ public class NacosRegistry implements Registry {
         //注册到nacos
         namingService.registerInstance(serviceMetaInfo.getServiceKey(), serviceMetaInfo.getServiceGroup(), buildServiceInstance(serviceMetaInfo));
         // 添加节点信息到本地缓存
-        String registerKey = NACOS_ROOT_PATH + "/" + serviceMetaInfo.getServiceNodeKey();
+        String registerKey = NACOS_ROOT_PATH + serviceMetaInfo.getServiceKey();
         localRegisterNodeKeySet.add(registerKey);
     }
 
@@ -101,7 +101,7 @@ public class NacosRegistry implements Registry {
             throw new RuntimeException(e);
         }
         // 从本地缓存移除
-        String registerKey = NACOS_ROOT_PATH + "/" + serviceMetaInfo.getServiceNodeKey();
+        String registerKey = NACOS_ROOT_PATH + serviceMetaInfo.getServiceKey();
         localRegisterNodeKeySet.remove(registerKey);
     }
 
@@ -113,7 +113,7 @@ public class NacosRegistry implements Registry {
     @Override
     public List<ServiceMetaInfo> serviceDiscovery(String serviceKey) {
         // 优先从缓存获取服务
-        List<ServiceMetaInfo> cachedServiceMetaInfoList = registryServiceCache.readCache();
+        List<ServiceMetaInfo> cachedServiceMetaInfoList = registryServiceCache.readCache(serviceKey);
         if (cachedServiceMetaInfoList != null && !cachedServiceMetaInfoList.isEmpty()) {
             return cachedServiceMetaInfoList;
         }
@@ -137,7 +137,7 @@ public class NacosRegistry implements Registry {
                     .collect(Collectors.toList());
             if (!metaInfoList.isEmpty()) {
                 // 写入本地缓存
-                registryServiceCache.writeCache(metaInfoList);
+                registryServiceCache.writeCache(serviceKey, metaInfoList);
             }
             return metaInfoList;
         } catch (NacosException e) {
@@ -146,18 +146,18 @@ public class NacosRegistry implements Registry {
     }
 
     @Override
-    public void watch(String serviceNodeKey) {
-        boolean newWatch = watchingKeySet.add(serviceNodeKey);
+    public void watch(String serviceKey) {
+        boolean newWatch = watchingKeySet.add(serviceKey);
         if (newWatch) {
             try {
-                namingService.subscribe(serviceNodeKey, event -> {
+                namingService.subscribe(serviceKey, event -> {
                     if (event instanceof NamingEvent) {
                         List<Instance> instanceList = ((NamingEvent) event).getInstances();
                         if (null != instanceList && !instanceList.isEmpty()) {
                             instanceList.forEach(instance -> {
                                 //持久化实例健康检查失败后会被标记成不健康，而临时实例会直接从列表中被删除
                                 if (!instance.isHealthy()) {
-                                    registryServiceCache.clearCache();
+                                    registryServiceCache.clearCache(serviceKey);
                                 }
                             });
                         }

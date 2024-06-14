@@ -14,12 +14,14 @@ public class RegistryConfig {
     /**
      * 注册中心类别
      */
-    private String registry = RegistryKeys.NACOS;
+    private String registry = RegistryKeys.ETCD;
 
     /**
      * 注册中心地址
+     * nacos:8848
+     * etcd:2379
      */
-    private String address = "http://localhost:8848";
+    private String address = "http://localhost:2379";
 
     /**
      * 超时时间（单位毫秒）
