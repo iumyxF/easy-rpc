@@ -24,4 +24,14 @@ public class UserServiceImpl implements UserService {
     public User getUser(Long id) {
         return new User(9999L, "jack", 18);
     }
+
+    @Override
+    public String testRetry() {
+        try {
+            Thread.sleep(5 * 1000L);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        return "ok retry";
+    }
 }

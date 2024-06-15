@@ -1,5 +1,6 @@
 package com.example.rpc.config;
 
+import com.example.rpc.fault.retry.RetryStrategyKeys;
 import com.example.rpc.loadbalancer.LoadBalancerKeys;
 import com.example.rpc.model.RpcConstant;
 import com.example.rpc.serializer.SerializerKeys;
@@ -42,12 +43,17 @@ public class RpcConfig {
     /**
      * HTTP服务器类型
      */
-    private String httpServer = NetServerKeys.NETTY_TCP;
+    private String httpServer = NetServerKeys.VERTX_TCP;
 
     /**
      * 负载均衡器
      */
     private String loadBalancer = LoadBalancerKeys.RANDOM;
+
+    /**
+     * 重试策略
+     */
+    private String retryStrategy = RetryStrategyKeys.FIXED_INTERVAL;
 
     /**
      * 注册中心配置

@@ -29,4 +29,8 @@ public class ExampleServiceImpl {
         String hello = userService.sayHello(user.getName());
         System.out.println("hello = " + hello);
     }
+
+    public void testRetry() {
+        userService.testRetry();
+    }
 }

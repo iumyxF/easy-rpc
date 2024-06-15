@@ -1,6 +1,7 @@
 package com.example.consumer;
 
 import com.example.consumer.service.ExampleServiceImpl;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,11 @@ public class ExampleServiceImplTest {
     @Test
     public void test1() {
         exampleService.test();
+    }
+
+    @Ignore
+    @Test
+    public void testRetry(){
+        exampleService.testRetry();
     }
 }

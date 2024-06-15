@@ -6,6 +6,7 @@ import com.example.rpc.model.RpcResponse;
 import com.example.rpc.model.ServiceMetaInfo;
 
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 /**
  * @author iumyxF
@@ -14,7 +15,7 @@ import java.util.concurrent.ExecutionException;
  */
 public class VertxTcpClientTest {
 
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
+    public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
         RpcRequest rpcRequest = new RpcRequest();
         rpcRequest.setServiceName("HelloService");
         rpcRequest.setMethodName("sayHello");

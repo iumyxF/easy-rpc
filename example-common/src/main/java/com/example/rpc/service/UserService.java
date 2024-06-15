@@ -24,4 +24,10 @@ public interface UserService {
      * @return
      */
     User getUser(Long id);
+
+    /**
+     * 测试重试级制
+     * @return
+     */
+    String testRetry();
 }

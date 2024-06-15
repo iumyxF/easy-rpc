@@ -17,6 +17,8 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * @author iumyxF
@@ -37,7 +39,7 @@ public class VertxTcpClient {
      * @throws InterruptedException
      * @throws ExecutionException
      */
-    public static RpcResponse doRequest(RpcRequest rpcRequest, ServiceMetaInfo serviceMetaInfo) throws InterruptedException, ExecutionException {
+    public static RpcResponse doRequest(RpcRequest rpcRequest, ServiceMetaInfo serviceMetaInfo) throws InterruptedException, ExecutionException, TimeoutException {
         // 发送 TCP 请求
         Vertx vertx = Vertx.vertx();
         NetClient netClient = vertx.createNetClient();
@@ -62,7 +64,6 @@ public class VertxTcpClient {
                         try {
                             ProtocolMessage<RpcResponse> rpcResponseProtocolMessage =
                                     (ProtocolMessage<RpcResponse>) ProtocolMessageDecoder.decode(buffer.getBytes());
-                            log.info("client 接受到响应 : {}", rpcResponseProtocolMessage);
                             responseFuture.complete(rpcResponseProtocolMessage.getBody());
                         } catch (IOException e) {
                             throw new RuntimeException("协议消息解码错误");
@@ -70,7 +71,7 @@ public class VertxTcpClient {
                     });
                     socket.handler(tcpBufferHandlerWrapper);
                 });
-        RpcResponse rpcResponse = responseFuture.get();
+        RpcResponse rpcResponse = responseFuture.get(5, TimeUnit.SECONDS);
         // 关闭连接
         netClient.close();
         return rpcResponse;
