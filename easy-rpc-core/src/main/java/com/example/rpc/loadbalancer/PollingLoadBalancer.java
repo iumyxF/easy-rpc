@@ -29,7 +29,7 @@ public class PollingLoadBalancer implements LoadBalancer {
             return serviceMetaInfoList.get(0);
         }
         // 取模算法轮询
-        int index = currentIndex.getAndIncrement() % size;
+        int index = currentIndex.getAndUpdate(current -> (current == Integer.MAX_VALUE) ? 0 : current + 1) % size;
         return serviceMetaInfoList.get(index);
     }
 }
